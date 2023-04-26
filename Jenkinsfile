@@ -1,7 +1,6 @@
 pipeline {
 	agent none  stages {
   	stage('centos Install') {
-    	agent {
       	docker {
         	image 'centos:latest'
         }
