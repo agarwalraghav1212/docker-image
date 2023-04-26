@@ -5,20 +5,20 @@ pipeline {
     
     
     stages{
-//     stage('Build') { 
-//             steps { 
-//                 script{
-//                  app = docker.build("node:16.13.1-alpine")
-//                 }
+      stage('Build') { 
+            steps { 
+                script{
+                app = docker.build("node:16.13.1-alpine")
+                }
+            }
+       }
+//      stage('run) {
+//            steps {
+//                script{
+//                    bat "docker run -d node:16.13.1-alpine"
+//                }
 //            }
-//       }
-     stage('run){
-           steps{
-               script{
-                   bat "docker run -d node:16.13.1-alpine"
-               }
-           }
-       }     
+//        }     
             
 }
 }
