@@ -1,5 +1,5 @@
 pipeline {
-	agent none  stages {
+	agent any stages {
   	stage('Maven Install') {
     	agent {
       	docker {
@@ -11,13 +11,11 @@ pipeline {
       }
     }
     stage('Docker Build') {
-    	agent any
       steps {
       	sh 'docker build -t shanem/spring-petclinic:latest .'
       }
     }
     stage('Docker Push') {
-    	agent any
       steps {
       	withCredentials([usernamePassword(credentialsId: 'dockerHub', passwordVariable: 'raghav1212', usernameVariable: 'raghavagarwal9660')]) {
         	sh "docker login -u ${env.dockerHubUser} -p ${env.dockerHubPassword}"
