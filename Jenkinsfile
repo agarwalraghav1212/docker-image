@@ -9,11 +9,11 @@ pipeline {
 //       steps {
 //       	sh 'mvn clean install'
 //       }
-//     }
+    }
     stage('Docker Build') {
     	agent any
       steps {
-      	sh 'docker build -t raghav/firstiamge:latest .'
+      	sh 'docker build -t raghav/firstimage:latest .'
       }
     }
     stage('Docker Push') {
@@ -21,7 +21,7 @@ pipeline {
       steps {
       	withCredentials([usernamePassword(credentialsId: 'dockerHub', passwordVariable: 'raghav1212', usernameVariable: 'raghavagarwal9660')]) {
         	sh "docker login -u ${env.dockerHubUser} -p ${env.dockerHubPassword}"
-          sh 'docker push shanem/spring-petclinic:latest'
+          sh 'docker push raghav/firstimage:latest'
         }
       }
     }
